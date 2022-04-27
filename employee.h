@@ -4,19 +4,17 @@
 #include <vector>
 #include <string>
 
-using namespace std;
-
 class Employee{
 private:
-    string name;
+    std::string name;
     int age;
-    string department;
-    string position;
-    string boss_name;
-    vector<string> working_days;
+    std::string department;
+    std::string position;
+    std::string boss_name;
+    std::vector<std::string> working_days;
 
 public:
-    Employee(string line);
-    friend ostream& operator<<(ostream &os, const Employee &e);
+    Employee(std::vector<std::string> fields);
+    friend std::ostream& operator<<(std::ostream &os, const Employee &e);
 };
 #endif //DATA_PROJ_CPP_EMPLOYEE_H

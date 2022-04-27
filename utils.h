@@ -4,8 +4,7 @@
 #include <vector>
 #include <string>
 
-using namespace std;
 
-vector<string> readCSVRow(const string &row);
-vector<vector<string>> readCSV(istream &in);
+std::vector<std::string> readCSVRow(const std::string &row);
+std::vector<std::vector<std::string>> readCSV(std::istream &in);
 #endif //DATA_PROJ_CPP_UTILS_H

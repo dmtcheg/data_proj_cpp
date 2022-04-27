@@ -3,8 +3,8 @@
 
 using namespace std;
 
-Employee::Employee(string line) {
-    auto fields = readCSVRow(line);
+Employee::Employee(vector<string> fields) {
+    //auto fields = readCSVRow(line);
     name = fields[0];
     age = stoi(fields[1]);
     department = fields[2];
@@ -17,7 +17,7 @@ Employee::Employee(string line) {
 }
 
 ostream &operator<<(ostream &os, const Employee &e) {
-    os << ("Name: "+ e.name + ", age" + to_string(e.age) + ", department: " + e.department + ", boss: " + e.boss_name);
+    os << ("Name: "+ e.name + ", age " + to_string(e.age) + ", department: " + e.department + ", boss: " + e.boss_name);
     return os;
 }
 //static Employee *make_employee(string line) {   }
