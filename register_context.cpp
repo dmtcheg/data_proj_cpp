@@ -19,6 +19,21 @@ void Register::load(string path) {
     }
 }
 
+Register::~Register() {
+    emplVector.clear();
+    //emplVector.~vector();
+}
+
+void Register::clear() {
+    emplVector.clear();
+}
+
+Register::Register(const Register& r) : emplVector(r.emplVector) {
+
+}
+
+Register::Register() = default;
+
 vector<shared_ptr<Employee>> Register::getStorage() {
     return vector<shared_ptr<Employee>>();
 }
@@ -45,10 +60,6 @@ std::set<std::shared_ptr<Employee>> Register::getByWorkingDays(std::set<std::str
     return employees;
 }
 
-void Register::clear() {
-    emplVector.clear();
-}
-
 std::vector<std::shared_ptr<Employee>> Register::getByAge(int l, int u) {
     auto employees = getStorage();
     vector<shared_ptr<Employee>> range;
@@ -57,10 +68,6 @@ std::vector<std::shared_ptr<Employee>> Register::getByAge(int l, int u) {
             range.push_back(e);
     }
     return range;
-}
-
-Register::Register(const Register& r) : emplVector(r.emplVector) {
-
 }
 
 std::vector<std::shared_ptr<Employee>> Register::getDirectSubordinates(std::string emplName) {
@@ -83,6 +90,3 @@ std::vector<std::shared_ptr<Employee>> Register::getIndirectSubordinates(std::st
     }
     return subordinates;
 }
-
-
-Register::Register() = default;

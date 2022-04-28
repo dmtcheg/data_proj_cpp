@@ -14,6 +14,7 @@ public:
     std::vector<std::shared_ptr<Employee>> emplVector;
     Register(const Register&);
     Register();
+    ~Register();
     //todo: add destructor
     //Register& operator=(const Register& r);
     void load(std::string path);
