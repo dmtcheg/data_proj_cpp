@@ -8,7 +8,7 @@ using namespace std;
 
 void print(vector<shared_ptr<Employee>> employess){
     for (auto e: employess){
-        cout<<*e;
+        cout<<*e<<endl;
     }
 }
 
@@ -71,13 +71,15 @@ void ui(Register reg){
             case 'b':{
                 string boss;
                 cout<<"boss name: ";
-                cin>>boss;
+                while (boss.length()==0)
+                    getline(cin, boss);
                 print(reg.getDirectSubordinates(boss)); //
             }break;
-            case  'i':{
+            case 'i':{
                 string boss;
                 cout<<"boss name: ";
-                cin>>boss;
+                while (boss.length()==0)
+                    getline(cin, boss);
                 print(reg.getIndirectSubordinates(boss));
             }break;
             case 'c':{
@@ -86,7 +88,7 @@ void ui(Register reg){
             case 'x':
                 return;
             default:
-                cout << "\nincorrect input\n";
+                cout << "incorrect input";
         }
     }
 }

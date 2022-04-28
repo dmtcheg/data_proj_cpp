@@ -80,7 +80,7 @@ std::vector<std::shared_ptr<Employee>> Register::getIndirectSubordinates(std::st
     queue<shared_ptr<Employee>> q;
     q.push(getByName(emplName));
     while (!q.empty()){
-        auto empl = q.back();
+        auto empl = q.front();
         q.pop();
         auto sub = subordinatesIndex[empl->getName()];
         for (auto e: sub){
