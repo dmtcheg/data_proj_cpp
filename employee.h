@@ -15,6 +15,11 @@ private:
 
 public:
     Employee(std::vector<std::string> fields);
+    std::string getName();
+    int getAge();
+    std::string getDepartment();
+    std::string getBoss();
+    std::vector<std::string> getSchedule();
     friend std::ostream& operator<<(std::ostream &os, const Employee &e);
 };
 #endif //DATA_PROJ_CPP_EMPLOYEE_H
