@@ -11,12 +11,12 @@ enum class CSVState {
 vector<string> readCSVRow(const string &row) {
     CSVState state = CSVState::UnquotedField;
     vector<string> fields{""};
-    size_t i = 0; // index of the current field
+    size_t i = 0;
     for (char c: row) {
         switch (state) {
             case CSVState::UnquotedField:
                 switch (c) {
-                    case '\t': // end of field
+                    case '\t':
                         fields.push_back("");
                         i++;
                         break;
@@ -40,16 +40,16 @@ vector<string> readCSVRow(const string &row) {
                 break;
             case CSVState::QuotedQuote:
                 switch (c) {
-                    case '\t': // , after closing quote
+                    case '\t':
                         fields.push_back("");
                         i++;
                         state = CSVState::UnquotedField;
                         break;
-                    case '"': // "" -> "
+                    case '"':
                         fields[i].push_back('"');
                         state = CSVState::QuotedField;
                         break;
-                    default:  // end of quote
+                    default:
                         state = CSVState::UnquotedField;
                         break;
                 }
@@ -59,7 +59,6 @@ vector<string> readCSVRow(const string &row) {
     return fields;
 }
 
-/// Read CSV file, Excel dialect. Accept "quoted fields ""with quotes"""
 vector<vector<string>> readCSV(istream &in) {
     vector<vector<string>> table;
     string row;

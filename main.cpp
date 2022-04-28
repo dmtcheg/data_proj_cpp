@@ -16,7 +16,7 @@ void ui(Register reg){
     while (true) {
         char command;
         cin >> command;
-        command = char(tolower(command));//todo: check
+        command = char(tolower(command));
         switch (command) {
             case 'l': {
                 cout << "path: ";
@@ -26,13 +26,12 @@ void ui(Register reg){
             }
                 break;
             case 'n': {
-                //todo: check if emplVector exist
-                cout << reg.emplVector.size()<<endl;
+                cout << reg.getStorage().size()<<endl;
             }
                 break;
             case 'p': {
-                for (int i = 0; i < size(reg.emplVector); i++) {
-                    cout << *(reg.emplVector[i]) << endl;
+                for (int i = 0; i < size(reg.getStorage()); i++) {
+                    cout << *(reg.getStorage()[i]) << endl;
                 }
             }break;
             case 'e': {
@@ -43,7 +42,7 @@ void ui(Register reg){
             }break;
             case 'a': {
                 int l, u;
-                cout << "\nfrom: ";
+                cout << "from: ";
                 cin >> l;
                 cout << "\nto: ";
                 cin >> u;
@@ -92,7 +91,6 @@ void ui(Register reg){
         }
     }
 }
-
 
 int main() {
     Register reg;

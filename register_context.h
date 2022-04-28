@@ -7,19 +7,19 @@
 
 class Register {
 private:
-    std::map<std::string, std::shared_ptr<Employee>> namesIndex; //names are unique, see task description
+    std::map<std::string, std::shared_ptr<Employee>> namesIndex;
     std::map<std::string, std::vector<std::shared_ptr<Employee>>> departmentIndex;
-    std::map<std::string, std::vector<std::shared_ptr<Employee>>> subordinatesIndex; // todo: direct and indirect (recursive)
+    std::map<std::string, std::vector<std::shared_ptr<Employee>>> subordinatesIndex;
 public:
     std::vector<std::shared_ptr<Employee>> emplVector;
-    Register(const Register&);
     Register();
     ~Register();
-    //todo: add destructor
-    //Register& operator=(const Register& r);
+    Register(const Register&);
+    Register& operator=(const Register& r);
+
     void load(std::string path);
     void clear();
-    std::vector<std::shared_ptr<Employee>> getStorage(); //todo: make sure that this collection is protected from changing and also you have to avoid copying it
+    const std::vector<std::shared_ptr<Employee>> getStorage() const; //todo: make sure that this collection is protected from changing and also you have to avoid copying it
     std::vector<std::shared_ptr<Employee>> getByAge(int l, int u); //lower, upper bound (including)
     std::shared_ptr<Employee> getByName(std::string name);
     std::vector<std::shared_ptr<Employee>> getByDepartment(std::string dep);
