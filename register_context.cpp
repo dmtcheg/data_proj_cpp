@@ -103,4 +103,3 @@ std::vector<std::shared_ptr<Employee>> Register::getIndirectSubordinates(std::st
     }
     return subordinates;
 }
-

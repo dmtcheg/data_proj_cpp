@@ -3,7 +3,6 @@
 using namespace std;
 
 Employee::Employee(vector<string> fields) {
-    //auto fields = readCSVRow(line);
     name = fields[0];
     age = stoi(fields[1]);
     department = fields[2];
@@ -38,4 +37,3 @@ std::vector<std::string> Employee::getSchedule() {
 int Employee::getAge() {
     return age;
 }
-//static Employee *make_employee(string line) {   }

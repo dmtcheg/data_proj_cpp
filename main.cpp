@@ -38,13 +38,18 @@ void ui(Register reg){
                 string name;
                 cout << "name: ";
                 cin >> name;
-                cout << endl << *(reg.getByName(name));
+                auto e = reg.getByName(name);
+                if (e.get() != NULL){
+                    cout << endl << *e;
+                }else{
+                    cout<<"employee not found";
+                }
             }break;
             case 'a': {
                 int l, u;
                 cout << "from: ";
                 cin >> l;
-                cout << "\nto: ";
+                cout << "to: ";
                 cin >> u;
                 print(reg.getByAge(l, u));
             }break;
@@ -93,6 +98,21 @@ void ui(Register reg){
 }
 
 int main() {
+    string info = "Employee database\n"
+                  "=================\n"
+                  "(l) Load a file\n"
+                  "(c) Clear a dataset\n"
+                  "(n) Print number of records in a dataset\n"
+                  "(p) Print all records\n"
+                  "(e) Print an employee by their name\n"
+                  "(a) Print all employees with an age in a given range\n"
+                  "(s) Print all employees with working day in set \n"
+                  "(d) Print an employee by department\n"
+                  "(b) Print an direct subordinates of employee\n"
+                  "(i) Print an indirect subordinates of employee\n"
+                  "(x) Exit\n"
+                  "Choose an action: _\n";
+    cout<<info;
     Register reg;
     ui(reg);
     return 0;

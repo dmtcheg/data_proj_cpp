@@ -62,7 +62,6 @@ vector<string> readCSVRow(const string &row) {
 vector<vector<string>> readCSV(istream &in) {
     vector<vector<string>> table;
     string row;
-    //getline(in,row);
     while (!in.eof()) {
         getline(in, row);
         if (in.bad() || in.fail()) {

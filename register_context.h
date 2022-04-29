@@ -19,8 +19,8 @@ public:
 
     void load(std::string path);
     void clear();
-    const std::vector<std::shared_ptr<Employee>> getStorage() const; //todo: make sure that this collection is protected from changing and also you have to avoid copying it
-    std::vector<std::shared_ptr<Employee>> getByAge(int l, int u); //lower, upper bound (including)
+    const std::vector<std::shared_ptr<Employee>> getStorage() const;
+    std::vector<std::shared_ptr<Employee>> getByAge(int l, int u);
     std::shared_ptr<Employee> getByName(std::string name);
     std::vector<std::shared_ptr<Employee>> getByDepartment(std::string dep);
     std::set<std::shared_ptr<Employee>> getByWorkingDays(std::set<std::string>);
