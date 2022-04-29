@@ -4,15 +4,20 @@
 #include <cctype>
 #include <algorithm>
 #include "register_context.h"
+
 using namespace std;
 
-void print(vector<shared_ptr<Employee>> employess){
-    for (auto e: employess){
-        cout<<*e<<endl;
+void print(vector<shared_ptr<Employee>> employess) {
+    if (employess.size() == 0)
+        cout << "not found";
+    else {
+        for (auto e: employess) {
+            cout << *e << endl;
+        }
     }
 }
 
-void ui(Register reg){
+void ui(Register reg) {
     while (true) {
         char command;
         cin >> command;
@@ -26,25 +31,27 @@ void ui(Register reg){
             }
                 break;
             case 'n': {
-                cout << reg.getStorage().size()<<endl;
+                cout << reg.getStorage().size() << endl;
             }
                 break;
             case 'p': {
                 for (int i = 0; i < size(reg.getStorage()); i++) {
                     cout << *(reg.getStorage()[i]) << endl;
                 }
-            }break;
+            }
+                break;
             case 'e': {
                 string name;
                 cout << "name: ";
                 cin >> name;
                 auto e = reg.getByName(name);
-                if (e.get() != NULL){
+                if (e.get() != NULL) {
                     cout << endl << *e;
-                }else{
-                    cout<<"employee not found";
+                } else {
+                    cout << "employee not found";
                 }
-            }break;
+            }
+                break;
             case 'a': {
                 int l, u;
                 cout << "from: ";
@@ -52,43 +59,54 @@ void ui(Register reg){
                 cout << "to: ";
                 cin >> u;
                 print(reg.getByAge(l, u));
-            }break;
-            case 's':{
+            }
+                break;
+            case 's': {
                 set<string> sc;
-                cout<<"working days (3 letters format, q to end): "<<endl;
+                cout << "working days (3 letters format, q to end): " << endl;
                 string day;
-                cin>>day;
-                while (day != "q" && sc.size()<7){
+                cin >> day;
+                while (day != "q" && sc.size() < 7) {
                     sc.insert(day);
-                    cin>>day;
+                    cin >> day;
                 }
-                for (auto e: reg.getByWorkingDays(sc)){
-                    cout<<*e;
+                auto employees = reg.getByWorkingDays(sc);
+                if (employees.size() == 0) {
+                    cout << "not found";
+                } else {
+                    for (auto e: reg.getByWorkingDays(sc)) {
+                        cout << *e;
+                    }
                 }
-            }break;
-            case 'd':{
+            }
+                break;
+            case 'd': {
                 string dep;
-                cout<<"department: ";
-                cin>>dep;
+                cout << "department: ";
+                cin >> dep;
                 print(reg.getByDepartment(dep));
-            }break;
-            case 'b':{
+            }
+                break;
+            case 'b': {
                 string boss;
-                cout<<"boss name: ";
-                while (boss.length()==0)
+                cout << "boss name: ";
+                while (boss.length() == 0)
                     getline(cin, boss);
-                print(reg.getDirectSubordinates(boss)); //
-            }break;
-            case 'i':{
+                print(reg.getDirectSubordinates(boss));
+            }
+                break;
+            case 'i': {
                 string boss;
-                cout<<"boss name: ";
-                while (boss.length()==0)
+                cout << "boss name: ";
+                while (boss.length() == 0)
                     getline(cin, boss);
                 print(reg.getIndirectSubordinates(boss));
-            }break;
-            case 'c':{
+            }
+                break;
+            case 'c': {
                 reg.clear();
-            }break;
+            }
+                break;
             case 'x':
                 return;
             default:
@@ -112,7 +130,7 @@ int main() {
                   "(i) Print an indirect subordinates of employee\n"
                   "(x) Exit\n"
                   "Choose an action: _\n";
-    cout<<info;
+    cout << info;
     Register reg;
     ui(reg);
     return 0;
